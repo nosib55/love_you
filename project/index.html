@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Do You Love Me?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff0f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      color: #d6336c;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .yes {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    .no {
+      background-color: #dcdcdc;
+    }
+
+    .heart {
+      font-size: 50px;
+      animation: pulse 1s infinite;
+      color: red;
+      margin-top: 20px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    .loading {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #ff69b4;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="question">I love you. Do you love me?</h1>
+
+  <div class="buttons" id="buttons">
+    <button class="yes" onclick="showLove()">1. Yes</button>
+    <button class="no" onclick="askAgain()">2. No</button>
+  </div>
+
+  <div id="animation" style="display:none;">
+    <div class="heart">❤</div>
+    <h2>I Love You Too!</h2>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Please wait...</p>
+  </div>
+
+  <script>
+    function showLove() {
+      document.getElementById("question").style.display = "none";
+      document.getElementById("buttons").style.display = "none";
+      document.getElementById("animation").style.display = "block";
+    }
+
+    function askAgain() {
+      document.getElementById("question").style.display = "none";
+      document.getElementById("buttons").style.display = "none";
+      document.getElementById("loading").style.display = "block";
+
+      setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("question").style.display = "block";
+        document.getElementById("buttons").style.display = "block";
+      }, 2000); // 2 seconds loading
+    }
+  </script>
+
+</body>
+</html>
